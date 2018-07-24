@@ -1,0 +1,48 @@
+<div [ngClass]="{alert: true, error: show, success: show2 }">
+  <h2>{{message}}</h2>
+</div>
+
+<ul>
+  <li *ngFor="let student of learners, let i = index" [ngSwitch]="i" >
+    <span *ngSwitchCase="0">{{'Rickin' | uppercase}}</span>
+    <span *ngSwitchCase="1">{{fecha | date: "dd/MMM/yyyy:hh:mm"}}</span>
+    <span *ngSwitchDefault>{{1200 | currency: "JPY"}}</span>
+    <h1>{{form | json}}</h1>
+  </li>
+</ul>
+
+<div>
+  <input #newL (keydown.enter)="learners.push({name: newL.value})" type="text" placeholder="Agrega tu Rick">
+  <input [(ngModel)]="box" type="text" placeholder="Busca tu Ricky">
+  <h2 *ngFor = "let student of learners | filter: 'name': box">{{student.name}}</h2>
+</div>
+
+<section class="container">
+  <div class="card">
+    <h2>{{email}}</h2>
+
+    <input *ngIf="show" #username (keydown)="onkeydown(username.value)" placeholder="Introduzca su nombre de usuario">
+    <br>
+    <input [(ngModel)]="form.email" type="email" name="" placeholder="Tu email">
+    <br>
+    <input [(ngModel)]="form.password" type="password" placeholder="Tu contraseña">
+    
+    <input #checkbox (change)="togglePassword(checkbox.checked, pass)" type="checkbox"> "Show password"
+    <br>
+    <button (click)="testing()">Login</button>
+  </div>
+</section>
+
+
+<!-- Si eres una señora de 60 años te tardas media hora para tipear tu contraseña  
+  <input type="email" name="" placeholder="Tu email">
+  <input  [type]="type" placeholder="Tu contraseña">  
+  <input #checkbox (change)="togglePassword(checkbox.checked, pass)" type="checkbox"> "Show password"
+      <button>Login</button>
+
+  [type]="type"
+<div [class]="clase">
+  <h2>{{message}}</h2>
+</div>
+ -->
+  <!-- {{student.age}} --- {{student.name}} --- {{i}} -->
